@@ -1,6 +1,3 @@
-//= require jquery
-//= require rails-ujs
-//= require jquery.raty.js
 /*!
  * Raty - A Star Rating Plugin
  *

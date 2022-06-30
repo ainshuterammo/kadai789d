@@ -5,14 +5,17 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
+    @review = Review.new
   end
 
   def index
     @books = Book.all
     @book = Book.new
+    @review = Review.new
   end
 
   def create
+    @review = Review.new
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
@@ -39,10 +42,16 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+
+
   private
 
   def book_params
     params.require(:book).permit(:title, :body, :rate)
+  end
+
+  def movie_params
+  params.require(:movie).permit(:title, :evaluation) # evaluationを追加
   end
 
   def ensure_correct_user
